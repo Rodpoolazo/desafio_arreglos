@@ -1,29 +1,28 @@
 # crear programa que lea un archivo que tiene un dato por lineas
 
 data = open('procesos.data').readlines
+#print data
 
-print data
+#se crea archivo "procesos_filtrado.data"
+salida = open('procesos_filtrados.data', 'w') # w se
+
+# usuario ingresa valor buscado
+n = ARGV[0].to_i
 
 # limpiar y transformar en integers
 data_integers = data.map{|x| x.to_i}
-print data_integers
+#print data_integers
+
+#se seleciona y autoguarda en el nuevo archivo con "salida"
+data_integers.select{|x| salida.puts x if x > n}
+
+# Siempre hay que cerrar el archivo creado.
+
+salida.close
+
+# si se cambia la "n" con "w" el archivo se sobreescribe.
+# si se cambia la "n" con "a" el archivo se le van agregando los nuevos datos.
 
 
 
-#se crea archivo "procesos_filtrado.data"
 
-data = filtrado_data("procesos_filtrado.data")
-n = data.count
-n.times do |i|
-   filtrado_data = data_integers.select{|x| x > n}
-end
-
-
-procesos_filtrado.data.write('output', data_integers.join("\n"))
-
-print filtrado_data
-
-
-
-# eso crea un nuevo archivo con el arreglo solicitado.
-#File.write('output', data.join("\n"))
